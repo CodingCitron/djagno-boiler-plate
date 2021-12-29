@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="main-page">
+    <div class="main-sidebar">
+        {% include "sidebar.html" %}
+    </div>
+    <div class="main-contents">
+        <div>
+        </div>
+        <div>
+            {% if page == 'post' or page == 'update' %}
+                {% include "board/post.html" %}
+            {% elif page == 'read' %}
+                {% include "board/read.html" %}
+            {% else %}
+                {% include "board/list.html" %}
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}

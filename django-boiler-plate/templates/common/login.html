@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="login-wrap">    
+    <h2>로그인</h2>
+    <form action="{% url 'common:login' %}" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="user_id"></label>
+            <input type="text" name="user_id" id="user_id" placeholder="아이디를 입력해주세요.">
+        </div>
+        <div>
+            <label for="user_pwd"></label>
+            <input type="password" name="user_pwd" id="user_pwd" placeholder="비밀번호를 입력해주세요.">
+        </div>
+        <div>
+            <button type="submit" class="button">로그인</button>
+            <a href="{% url 'common:findIdPwd' %}" class="button">비밀번호 찾기</a>
+        </div>
+        <div class="error">
+        {% if message %}
+            {{ message }}
+        {% endif %}
+        </div>
+    </form>
+</section>
+{% endblock %}

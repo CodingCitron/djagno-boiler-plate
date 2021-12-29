@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="find-pwd-wrap">    
+    <h2>비밀번호 찾기</h2>
+    <form action="{% url 'common:findIdPwd' %}" method="post" name="findIdPwd">
+        {% csrf_token %}
+        <div>
+            <label for="user_name">이름</label>
+            <input type="text" name="user_name" id="user_name">
+        </div>
+        <div>
+            <label for="user_email">이메일</label>
+            <input type="email" name="user_email" id="user_email">
+        </div>
+        <button type="button" class="button" id="findIdPwd">임시 비밀번호 발급</button>
+    </form>
+</section>
+{% endblock %}

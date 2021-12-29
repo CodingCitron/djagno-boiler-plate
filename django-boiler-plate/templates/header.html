@@ -1,0 +1,25 @@
+<header class="base-header">
+    <div class="inner">
+        <div class="logo">
+            <h1><a href="{% url 'home' %}">LOGO</a></h1>
+        </div>
+        <nav>
+            {% if request.session.user_id %}
+            <ul class="dropdown">
+                <li>{{ request.session.user_id }}
+                    <ul>
+                        <li><a href="{% url 'common:mypage' %}">나의 정보</a></li>
+                        <li><a href="#">기타</a></li>
+                        <li><a href="#">테스트</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="{% url 'common:logout' %}">로그아웃</a>
+            {% else %}
+            <a href="{% url 'common:login' %}">로그인</a>
+            <a href="{% url 'common:register' %}">회원가입</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+<div class="header-space"></div>

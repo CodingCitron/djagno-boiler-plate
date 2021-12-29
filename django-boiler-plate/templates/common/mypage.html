@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="profile-wrap">
+    <h2>마이 페이지</h2>
+    <div class="container">
+        <h3>프로필</h3>
+        <div class="inner">
+            <div id="user_id" class="item">
+                <div class="label">아이디</div>
+                <div>{{ result.user_id }}</div>
+            </div>
+            <div id="user_name" class="item">
+                <div class="label">이름</div>
+                <div>{{ result.user_name }}</div>
+            </div>
+            <div id="user_email" class="item">
+                <div class="label">이메일</div>
+                <div>{{ result.user_email }}</div>
+            </div>
+            <div id="user_register_date" class="item">
+                <div class="label">가입일</div>
+                <div>{{ result.user_register_date }}</div>
+            </div>
+        </div>
+    </div>
+    <form action="{% url 'common:deleteMember' %}" method="post" id="deleteMemberForm">
+        {% csrf_token %}
+        <div class="profile-button">
+            <a href="{% url 'common:editProfile' %}" class="button">정보 수정</a>
+            <button type="submit" id="deleteMember" class="button">회원 탈퇴</button>
+        </div>
+    </form>
+</section>
+{% endblock %}

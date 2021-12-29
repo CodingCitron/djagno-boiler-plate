@@ -1,0 +1,23 @@
+{% load tz %}
+<section class="writing-list board-css-sync">
+    <h2>글 목록</h2>
+    <ul class="view" id="view">
+        <li>
+            <div>글번호</div>
+            <div>글제목</div>    
+            <div>작성자</div>
+            <div>등록일</div>
+        </li>
+        {% for item in list %}
+        <li>
+            <div>{{ item.post_id }}</div>
+            <div><a href="{% url 'board:read' post_id=item.post_id %}">{{ item.title }}</a></div>
+            <div>{{ item.writer }}</div>
+            <div>{{ item.register_date | date:'Y.m.d' }}</div>
+        </li>
+        {% empty %}
+        <li class="grid-add">작성된 글이 없습니다.</li>
+        {% endfor %}
+    </ul>
+</section>
+{% include "board/pagination.html" %}

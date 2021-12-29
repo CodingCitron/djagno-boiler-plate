@@ -1,0 +1,44 @@
+version: '3'
+services:
+        django_project:
+                build:
+                        context: ./django-boiler-plate
+                        dockerfile: Dockerfile
+
+                container_name: django_project
+
+                working_dir: /code/django_project    
+
+                command: >
+                        bash -c "python manage.py makemigrations && python manage.py migrate
+                        && ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+                        && gunicorn --workers=16 --bind 0.0.0.0:8806 django_project.wsgi:application --access-logfile access.log --error-logfile error.log"
+                        
+                volumes:
+                        - ./django-boiler-plate:/code/django_project
+                        
+                restart: always
+                expose:
+                        - "8806"
+
+                depends_on:
+                        - django_wprj
+
+        django_wprj:
+                image: postgres:latest
+                container_name: django_wprj
+
+                expose:
+                        - "5433"
+
+                restart: always
+
+                volumes:
+                        - ./django-boiler-plate/dbinfo/init/:/docker-entrypoint-initdb.d/
+                        - ./django-boiler-plate/dbinfo/pgdata:/var/lib/postgresql/data
+                        
+                environment:
+                        - POSTGRES_DB=django_wprj
+                        - POSTGRES_USER=sangmin
+                        - POSTGRES_PASSWORD=123456
+                        - PGDATA=/var/lib/postgresql/data/pgdata

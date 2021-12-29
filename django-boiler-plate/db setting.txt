@@ -1,0 +1,37 @@
+CREATE DATABASE django_wprj;
+CREATE USER sangmin WITH PASSWORD '123456';
+ALTER ROLE sangmin SET client_encoding TO 'utf8';
+ALTER ROLE sangmin SET default_transaction_isolation TO 'read committed';
+ALTER ROLE sangmin SET TIME ZONE 'Asia/Seoul';
+GRANT ALL PRIVILEGES ON DATABASE django_wprj To sangmin;
+
+select post_id, title, writer from "board" where category = '기본 게시판'
+
+select writer from board where post_id = 6
+
+select "post_id", "title", "writer", "register_date" from "board" order by register_date limit 10 offset 0
+
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+insert into board (category, contents, writer, register_date, title) values('기본 게시판', '{"ops":[{"insert":"안녕하세요\n"}]}', '25', now(), '테스트 글');
+
+select user_id, user_name, user_email, user_register_date, user_auth from "user" where user_id = '25'
+select "post_id", "title", "writer", "register_date"from "board" order by register_date desc limit 10 offset 0
+
+update "user" set user_id = '034' where user_id = '25'

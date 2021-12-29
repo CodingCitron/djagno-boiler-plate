@@ -1,0 +1,34 @@
+{% load static %}
+{% if error %}
+<script>
+    alert("{{error}}")
+</script>
+{% endif %}
+<section class="read-post board-css-sync">
+    <h2>글을 가져왔어요 ~</h2>
+    <div class="view">
+        <div class="title">
+            <h3>{{ contents.title }}</h3>
+            <div>
+                {{ contents.writer }} / {{ contents.register_date }}
+            </div>
+        </div>
+        <div class="contents" id="contents">
+            
+        </div>
+    </div>
+    <div class="hidden quill-wrapper">
+        <div id="editor">
+
+        </div>
+    </div>
+    {% if request.session.user_id == contents.writer %}
+    <div class="post-button">
+        <a href="{% url 'board:update' post_id=contents.post_id %}" class="button">수정</a>
+        <a href="{% url 'board:delete' post_id=contents.post_id %}" class="button" id="confirmDelete">삭제</a>
+    </div>
+    {% endif %}
+    <input type="hidden" id="contentsValue" value="{{ contents.contents }}">
+</section>
+<script src="{% static 'js/lib/quill.js' %}"></script>
+<script src="{% static 'js/quillControl.js' %}"></script>

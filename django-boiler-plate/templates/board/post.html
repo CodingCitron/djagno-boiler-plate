@@ -1,0 +1,40 @@
+{% load static %}
+<secion class="post-page board-css-sync">
+    {% if page == 'post' %}
+    <h2>글 작성 페이지</h2>
+    <div class="post-container">
+    <form id="quillForm" action="{% url 'board:post' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="title" id="title" placeholder="제목을 입력하세요." />
+        <div id="editor"> 
+            
+        </div>
+        </div>
+        <div class="post-button">
+            <button type="submit" class="button">작성</button>
+            <button type="button" class="button" id="postCancel">취소</button>
+        </div>
+        <input type="hidden" name="about">
+    </form>
+    {% elif page == 'update' %}
+    <h2>글 수정 페이지</h2>
+    <div class="post-container">
+    <form id="quillForm" action="{% url 'board:update' post_id=contents.post_id %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="title" id="title" value="{{ contents.title }}" placeholder="제목을 입력하세요." />
+        <div id="editor"> 
+            
+        </div>
+        </div>
+        <div class="post-button">
+            <button type="submit" class="button">수정</button>
+            <button type="button" class="button" id="updateCancel" value="{{ contents.post_id }}">취소</button>
+        </div>
+        <input type="hidden" name="about">
+        <input type="hidden" id="update" value="{{ contents.contents }}">
+    </form>
+    {% endif %}
+</secion>
+<script src="{% static 'js/lib/quill.js' %}"></script>
+<script src="{% static 'js/quillControl.js' %}"></script>
+<!-- ?now={% now 'jS F Y H:i' %} -->
